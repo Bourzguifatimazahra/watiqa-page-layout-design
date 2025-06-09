@@ -2,18 +2,26 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const LanguageSelection = () => {
   const navigate = useNavigate();
+  const { setLanguage, t } = useLanguage();
 
   const selectLanguage = (language: string) => {
-    // Store selected language in localStorage
-    localStorage.setItem('selectedLanguage', language);
+    setLanguage(language as any);
     navigate('/login');
   };
 
+  const languages = [
+    { code: 'french', name: 'FRANÇAIS', flag: '🇫🇷' },
+    { code: 'arabic', name: 'العربية', flag: '🇲🇦' },
+    { code: 'english', name: 'ENGLISH', flag: '🇬🇧' },
+    { code: 'tamazight', name: 'ⵜⴰⵎⴰⵣⵉⵖⵜ', flag: 'ⵣ' }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex flex-col">
       {/* Status bar simulation */}
       <div className="flex justify-between items-center px-4 py-2 text-sm font-medium">
         <span>9:41</span>
@@ -33,36 +41,40 @@ const LanguageSelection = () => {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col items-center justify-center px-8">
-        {/* Logo */}
+        {/* Logo with Moroccan colors */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-blue-600 mb-8">EZWatiqa</h1>
+          <div className="mb-4">
+            <span className="text-6xl">🎓</span>
+          </div>
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent mb-4">
+            EZWatiqa
+          </h1>
+          <p className="text-gray-600 text-lg">{t('lang.selectLanguage')}</p>
+          <div className="mt-2 text-sm text-gray-500">
+            🇲🇦 {t('welcome.moroccanUniversities')}
+          </div>
         </div>
 
         {/* Language Options */}
         <div className="w-full max-w-sm space-y-4">
-          <Button 
-            onClick={() => selectLanguage('french')}
-            variant="outline"
-            className="w-full py-6 text-xl font-medium border-2 border-blue-600 text-gray-800 bg-white hover:bg-blue-50 rounded-full"
-          >
-            FRANÇAIS
-          </Button>
-          
-          <Button 
-            onClick={() => selectLanguage('arabic')}
-            variant="outline"
-            className="w-full py-6 text-xl font-medium border-2 border-blue-600 text-gray-800 bg-white hover:bg-blue-50 rounded-full"
-          >
-            ARABE
-          </Button>
-          
-          <Button 
-            onClick={() => selectLanguage('english')}
-            variant="outline"
-            className="w-full py-6 text-xl font-medium border-2 border-blue-600 text-gray-800 bg-white hover:bg-blue-50 rounded-full"
-          >
-            ANGLAIS
-          </Button>
+          {languages.map((lang) => (
+            <Button 
+              key={lang.code}
+              onClick={() => selectLanguage(lang.code)}
+              variant="outline"
+              className="w-full py-6 text-xl font-medium border-2 border-green-600 text-gray-800 bg-white hover:bg-green-50 rounded-full transition-all duration-200 hover:scale-105"
+            >
+              <div className="flex items-center justify-center space-x-3">
+                <span className="text-2xl">{lang.flag}</span>
+                <span>{lang.name}</span>
+              </div>
+            </Button>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-8 text-center text-sm text-gray-500">
+          <p>🏛️ Universités Marocaines • جامعات مغربية</p>
         </div>
       </div>
     </div>
