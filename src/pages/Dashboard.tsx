@@ -2,12 +2,18 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import { FileText, User, Phone, Info, FolderOpen, LogOut } from 'lucide-react';
+import { FileText, User, Phone, Info, FolderOpen, LogOut, Home, MessageCircle } from 'lucide-react';
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
   const menuItems = [
+    { 
+      title: 'Accueil', 
+      icon: Home, 
+      route: '/home',
+      description: 'Page d\'accueil avec tous les services'
+    },
     { 
       title: 'Informations Personnelles', 
       icon: User, 
@@ -37,6 +43,12 @@ const Dashboard = () => {
       icon: FolderOpen, 
       route: '/other-docs',
       description: 'Documents additionnels'
+    },
+    { 
+      title: 'Assistant IA', 
+      icon: MessageCircle, 
+      route: '/chatbot',
+      description: 'Chatbot intelligent avec support vocal'
     }
   ];
 

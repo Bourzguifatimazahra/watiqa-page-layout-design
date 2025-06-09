@@ -10,6 +10,13 @@ import LanguageSelection from "./pages/LanguageSelection";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
+import PersonalInfo from "./pages/PersonalInfo";
+import LegalTutor from "./pages/LegalTutor";
+import ContactDetails from "./pages/ContactDetails";
+import SpecificInfo from "./pages/SpecificInfo";
+import OtherDocs from "./pages/OtherDocs";
+import Chatbot from "./pages/Chatbot";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +33,13 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/personal-info" element={<PersonalInfo />} />
+          <Route path="/legal-tutor" element={<LegalTutor />} />
+          <Route path="/contact-details" element={<ContactDetails />} />
+          <Route path="/specific-info" element={<SpecificInfo />} />
+          <Route path="/other-docs" element={<OtherDocs />} />
+          <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/original" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
