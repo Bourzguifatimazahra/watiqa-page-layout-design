@@ -25,7 +25,6 @@ const Register = () => {
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add registration logic here
     console.log('Registration attempt:', formData);
     navigate('/email-verification');
   };
@@ -48,7 +47,7 @@ const Register = () => {
       {/* Main content */}
       <div className="flex-1 flex flex-col justify-center px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-blue-600 mb-4">EZWatiqa</h2>
+          <h2 className="text-3xl font-bold text-blue-600 mb-4">🎓 EZWatiqa</h2>
           <p className="text-gray-600">Créer votre compte</p>
         </div>
 

@@ -13,9 +13,8 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add authentication logic here
     console.log('Login attempt:', { email, password });
-    navigate('/dashboard');
+    navigate('/home'); // Changed to navigate to home instead of dashboard
   };
 
   return (
@@ -36,7 +35,7 @@ const Login = () => {
       {/* Main content */}
       <div className="flex-1 flex flex-col justify-center px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-blue-600 mb-4">EZWatiqa</h2>
+          <h2 className="text-3xl font-bold text-blue-600 mb-4">🎓 EZWatiqa</h2>
           <p className="text-gray-600">Connectez-vous à votre compte</p>
         </div>
 
