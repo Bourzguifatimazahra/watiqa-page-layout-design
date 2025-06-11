@@ -1,73 +1,229 @@
-# Welcome to your Lovable project
 
-## Project info
+# EZWatiqa - Assistant Universitaire Marocain
 
-**URL**: https://lovable.dev/projects/54b65501-59e4-4161-8cb8-b4330a610670
+## 📋 Cahier des charges
 
-## How can I edit this code?
+### Vue d'ensemble du projet
+EZWatiqa est une application web progressive (PWA) conçue spécifiquement pour les étudiants des universités marocaines. Elle facilite la gestion des documents administratifs et des informations personnelles nécessaires pour les démarches universitaires.
 
-There are several ways of editing your application.
+### Objectifs principaux
+- Simplifier la gestion des documents universitaires
+- Centraliser les informations personnelles des étudiants
+- Fournir un assistant IA multilingue avec support vocal
+- Offrir une interface adaptée aux langues officielles du Maroc
 
-**Use Lovable**
+### Public cible
+- Étudiants des universités marocaines
+- Personnel administratif universitaire
+- Nouveaux étudiants en processus d'inscription
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/54b65501-59e4-4161-8cb8-b4330a610670) and start prompting.
+## 🛠️ Technologies utilisées
 
-Changes made via Lovable will be committed automatically to this repo.
+### Frontend
+- **React 18.3.1** - Bibliothèque JavaScript pour l'interface utilisateur
+- **TypeScript** - Typage statique pour JavaScript
+- **Vite** - Outil de build moderne et rapide
+- **React Router DOM 6.26.2** - Routage côté client
 
-**Use your preferred IDE**
+### Interface utilisateur
+- **Tailwind CSS** - Framework CSS utilitaire
+- **Shadcn/UI** - Composants UI modernes et accessibles
+- **Lucide React** - Bibliothèque d'icônes
+- **Radix UI** - Composants primitifs accessibles
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Gestion d'état et données
+- **TanStack React Query 5.56.2** - Gestion des données asynchrones
+- **React Hook Form 7.53.0** - Gestion des formulaires
+- **Zod 3.23.8** - Validation de schémas TypeScript
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Fonctionnalités avancées
+- **date-fns 3.6.0** - Manipulation des dates
+- **class-variance-authority** - Gestion des variantes de classes CSS
+- **cmdk** - Interface de commandes
+- **sonner** - Notifications toast
 
-Follow these steps:
+## 🏗️ Architecture du projet
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Structure des dossiers
+```
+src/
+├── components/           # Composants réutilisables
+│   ├── ui/              # Composants UI de base (Shadcn)
+│   ├── AssistantBot.tsx # Assistant IA flottant
+│   ├── Layout.tsx       # Layout principal
+│   └── LanguageSelector.tsx # Sélecteur de langue
+├── hooks/               # Hooks personnalisés
+│   ├── useLanguage.tsx  # Gestion multilingue
+│   └── use-*.ts         # Autres hooks utilitaires
+├── pages/               # Pages de l'application
+│   ├── Welcome.tsx      # Page d'accueil
+│   ├── LanguageSelection.tsx # Sélection de langue
+│   ├── Auth/            # Pages d'authentification
+│   ├── Dashboard.tsx    # Tableau de bord
+│   ├── Home.tsx         # Page d'accueil connectée
+│   └── UserInfo/        # Pages de gestion des informations
+├── lib/                 # Utilitaires
+└── main.tsx            # Point d'entrée
 ```
 
-**Edit a file directly in GitHub**
+### Composants principaux
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+#### 1. Système d'authentification
+- **Login** - Connexion utilisateur
+- **Register** - Inscription
+- **ForgotPassword** - Récupération de mot de passe
+- **EmailVerification** - Vérification email
 
-**Use GitHub Codespaces**
+#### 2. Gestion des informations utilisateur
+- **PersonalInfo** - Informations personnelles
+- **LegalTutor** - Informations du tuteur légal
+- **ContactDetails** - Coordonnées et adresse
+- **SpecificInfo** - Informations spécifiques universitaires
+- **OtherDocs** - Autres documents
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+#### 3. Assistant IA
+- **Chatbot** - Interface de chat avec support vocal
+- **AssistantBot** - Widget flottant accessible depuis toutes les pages
 
-## What technologies are used for this project?
+## 🌍 Support multilingue
 
-This project is built with:
+### Langues supportées
+- **Français** - Langue principale
+- **العربية (Arabe)** - Langue officielle du Maroc
+- **English** - Langue internationale
+- **ⵜⴰⵎⴰⵣⵉⵖⵜ (Tamazight)** - Langue amazighe
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Fonctionnalités linguistiques
+- Interface RTL pour l'arabe
+- Polices spécialisées (Noto Sans Arabic, Noto Sans Tifinagh)
+- Traduction contextuelle
+- Détection automatique de la direction du texte
 
-## How can I deploy this project?
+## 📱 Fonctionnalités
 
-Simply open [Lovable](https://lovable.dev/projects/54b65501-59e4-4161-8cb8-b4330a610670) and click on Share -> Publish.
+### Core Features
+1. **Gestion d'identité numérique**
+   - Stockage sécurisé des informations personnelles
+   - Upload et gestion des documents
+   - Validation des données
 
-## Can I connect a custom domain to my Lovable project?
+2. **Assistant IA multilingue**
+   - Chat textuel et vocal
+   - Réponses contextuelles
+   - Support des 4 langues
 
-Yes, you can!
+3. **Interface responsive**
+   - Design mobile-first
+   - Adaptation automatique aux différents écrans
+   - Navigation intuitive
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Fonctionnalités techniques
+- **PWA Ready** - Application web progressive
+- **Offline Support** - Fonctionnement hors ligne
+- **Performance optimisée** - Lazy loading, code splitting
+- **Accessibilité** - Conforme aux standards WCAG
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🔧 Configuration et déploiement
+
+### Prérequis
+- Node.js 18+
+- npm ou yarn
+
+### Installation
+```bash
+# Cloner le projet
+git clone <repository-url>
+
+# Installer les dépendances
+npm install
+
+# Lancer en développement
+npm run dev
+
+# Build pour production
+npm run build
+```
+
+### Variables d'environnement
+```env
+VITE_API_URL=<url-de-l-api>
+VITE_APP_NAME=EZWatiqa
+```
+
+## 🎨 Design System
+
+### Couleurs principales
+- **Vert** - Couleur du drapeau marocain
+- **Rouge** - Couleur du drapeau marocain
+- **Bleu** - Couleur institutionnelle
+
+### Typographie
+- **Sans-serif** - Police principale
+- **Noto Sans Arabic** - Texte arabe
+- **Noto Sans Tifinagh** - Texte amazighe
+
+## 📊 Métriques et performance
+
+### Objectifs de performance
+- **First Contentful Paint** < 1.5s
+- **Largest Contentful Paint** < 2.5s
+- **Cumulative Layout Shift** < 0.1
+- **First Input Delay** < 100ms
+
+### Accessibilité
+- **WCAG 2.1 AA** - Niveau de conformité visé
+- **Keyboard Navigation** - Navigation complète au clavier
+- **Screen Reader** - Support des lecteurs d'écran
+
+## 🔐 Sécurité
+
+### Mesures de sécurité
+- Validation côté client et serveur
+- Sanitisation des entrées utilisateur
+- Protection CSRF
+- Chiffrement des données sensibles
+
+## 🚀 Roadmap
+
+### Version 1.0 (Actuelle)
+- [x] Interface multilingue
+- [x] Gestion des informations utilisateur
+- [x] Assistant IA avec support vocal
+- [x] Design responsive
+
+### Version 1.1 (Prochaine)
+- [ ] Intégration API universitaires
+- [ ] Notifications push
+- [ ] Mode hors ligne avancé
+- [ ] Export PDF des documents
+
+### Version 2.0 (Future)
+- [ ] Intégration blockchain pour la vérification
+- [ ] IA avancée avec ML
+- [ ] Marketplace de services universitaires
+
+## 👥 Équipe de développement
+
+### Rôles et responsabilités
+- **Product Owner** - Définition des besoins
+- **UI/UX Designer** - Conception interface
+- **Frontend Developer** - Développement React
+- **Backend Developer** - API et base de données
+- **DevOps** - Déploiement et infrastructure
+
+## 📞 Support et maintenance
+
+### Canaux de support
+- Documentation en ligne
+- Chat support intégré
+- Email support
+- FAQ multilingue
+
+### Maintenance
+- Mises à jour sécurité mensuelles
+- Nouvelles fonctionnalités trimestrielles
+- Support technique 24/7
+
+---
+
+**EZWatiqa** - Simplifier la vie universitaire au Maroc 🇲🇦

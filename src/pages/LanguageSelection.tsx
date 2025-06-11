@@ -22,23 +22,6 @@ const LanguageSelection = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex flex-col">
-      {/* Status bar simulation */}
-      <div className="flex justify-between items-center px-4 py-2 text-sm font-medium">
-        <span>9:41</span>
-        <div className="flex items-center gap-1">
-          <div className="flex gap-1">
-            <div className="w-1 h-3 bg-black rounded-full"></div>
-            <div className="w-1 h-3 bg-black rounded-full"></div>
-            <div className="w-1 h-3 bg-black rounded-full"></div>
-            <div className="w-1 h-3 bg-gray-300 rounded-full"></div>
-          </div>
-          <div className="w-4 h-2 border border-black rounded-sm">
-            <div className="w-3 h-1 bg-black rounded-sm"></div>
-          </div>
-          <div className="w-6 h-3 bg-black rounded-sm"></div>
-        </div>
-      </div>
-
       {/* Main content */}
       <div className="flex-1 flex flex-col items-center justify-center px-8">
         {/* Logo with Moroccan colors */}
