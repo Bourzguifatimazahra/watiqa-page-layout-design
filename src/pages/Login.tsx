@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header with back button */}
       <div className="flex items-center justify-between px-4 py-4">
         <div className="flex items-center">
@@ -33,7 +33,7 @@ const Login = () => {
           >
             <ArrowLeft className={`h-6 w-6 ${isRTL ? 'rotate-180' : ''}`} />
           </Button>
-          <h1 className="text-xl font-semibold">{t('auth.login')}</h1>
+          <h1 className="text-xl font-semibold text-foreground">{t('auth.login')}</h1>
         </div>
         <LanguageSelector />
       </div>
@@ -44,11 +44,11 @@ const Login = () => {
           <div className="mb-4">
             <span className="text-5xl">🎓</span>
           </div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent mb-4">
+          <h2 className="text-3xl font-bold text-primary mb-4">
             EZWatiqa
           </h2>
-          <p className="text-gray-600">{t('welcome.subtitle')}</p>
-          <div className="mt-2 text-sm text-gray-500 flex items-center justify-center space-x-2">
+          <p className="text-muted-foreground">{t('welcome.subtitle')}</p>
+          <div className="mt-2 text-sm text-muted-foreground flex items-center justify-center space-x-2">
             <span>🇲🇦</span>
             <span>{t('welcome.moroccanUniversities')}</span>
           </div>
@@ -56,32 +56,32 @@ const Login = () => {
 
         <form onSubmit={handleLogin} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="email">{t('auth.email')}</Label>
+            <Label htmlFor="email" className="text-foreground">{t('auth.email')}</Label>
             <Input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full py-3"
+              className="w-full py-3 bg-card border-border text-foreground"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password">{t('auth.password')}</Label>
+            <Label htmlFor="password" className="text-foreground">{t('auth.password')}</Label>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full py-3"
+              className="w-full py-3 bg-card border-border text-foreground"
               required
             />
           </div>
 
           <Button 
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700 text-white font-medium rounded-full"
+            className="w-full py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-full"
           >
             {t('auth.connect')}
           </Button>
@@ -91,17 +91,17 @@ const Login = () => {
           <Button 
             variant="link" 
             onClick={() => navigate('/forgot-password')}
-            className="text-green-600"
+            className="text-primary hover:text-primary/80"
           >
             {t('auth.forgotPassword')}
           </Button>
           
-          <div className="text-gray-600">
+          <div className="text-muted-foreground">
             {t('auth.noAccount')}{' '}
             <Button 
               variant="link" 
               onClick={() => navigate('/register')}
-              className="text-red-600 p-0"
+              className="text-primary hover:text-primary/80 p-0"
             >
               {t('auth.register')}
             </Button>
