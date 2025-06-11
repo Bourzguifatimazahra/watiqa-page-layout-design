@@ -132,7 +132,7 @@ src/
 ### Installation
 ```bash
 # Cloner le projet
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/Bourzguifatimazahra/watiqa-page-layout-design)
 
 # Installer les dépendances
 npm install
@@ -143,12 +143,7 @@ npm run dev
 # Build pour production
 npm run build
 ```
-
-### Variables d'environnement
-```env
-VITE_API_URL=<url-de-l-api>
-VITE_APP_NAME=EZWatiqa
-```
+ 
 
 ## 🎨 Design System
 
@@ -205,11 +200,11 @@ VITE_APP_NAME=EZWatiqa
 ## 👥 Équipe de développement
 
 ### Rôles et responsabilités
-- **Product Owner** - Définition des besoins
-- **UI/UX Designer** - Conception interface
-- **Frontend Developer** - Développement React
-- **Backend Developer** - API et base de données
-- **DevOps** - Déploiement et infrastructure
+- **Product Owner** -  nawal EL KELLALI
+- **UI/UX Designer** -  nawal EL KELLALI
+- **Frontend Developer** -  Bourzgui fatima zahra
+- **Backend Developer** -  Bourzgui fatima zahra
+- **DevOps** -  Bourzgui fatima zahra
 
 ## 📞 Support et maintenance
 
