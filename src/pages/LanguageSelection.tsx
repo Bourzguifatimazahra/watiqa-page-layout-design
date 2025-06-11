@@ -21,7 +21,7 @@ const LanguageSelection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-primary/10 to-secondary/20 flex flex-col">
       {/* Main content */}
       <div className="flex-1 flex flex-col items-center justify-center px-8">
         {/* Logo with Moroccan colors */}
@@ -29,11 +29,11 @@ const LanguageSelection = () => {
           <div className="mb-4">
             <span className="text-6xl">🎓</span>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold text-primary mb-4">
             EZWatiqa
           </h1>
-          <p className="text-gray-600 text-lg">{t('lang.selectLanguage')}</p>
-          <div className="mt-2 text-sm text-gray-500">
+          <p className="text-muted-foreground text-lg">{t('lang.selectLanguage')}</p>
+          <div className="mt-2 text-sm text-muted-foreground">
             🇲🇦 {t('welcome.moroccanUniversities')}
           </div>
         </div>
@@ -45,7 +45,7 @@ const LanguageSelection = () => {
               key={lang.code}
               onClick={() => selectLanguage(lang.code)}
               variant="outline"
-              className="w-full py-6 text-xl font-medium border-2 border-green-600 text-gray-800 bg-white hover:bg-green-50 rounded-full transition-all duration-200 hover:scale-105"
+              className="w-full py-6 text-xl font-medium border-2 border-primary text-foreground bg-card hover:bg-primary/10 rounded-full transition-all duration-200 hover:scale-105"
             >
               <div className="flex items-center justify-center space-x-3">
                 <span className="text-2xl">{lang.flag}</span>
@@ -56,7 +56,7 @@ const LanguageSelection = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm text-gray-500">
+        <div className="mt-8 text-center text-sm text-muted-foreground">
           <p>🏛️ Universités Marocaines • جامعات مغربية</p>
         </div>
       </div>

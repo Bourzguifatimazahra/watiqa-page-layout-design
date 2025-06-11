@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -23,7 +22,7 @@ const Chatbot = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Predefined questions in multiple languages
+  // Enhanced predefined questions in multiple languages
   const predefinedQuestions = {
     french: [
       "Comment télécharger mes documents ?",
@@ -31,7 +30,9 @@ const Chatbot = () => {
       "Comment contacter mon tuteur ?",
       "Où trouve-t-on les informations de bourse ?",
       "Comment modifier mes informations personnelles ?",
-      "Quels sont les délais pour les inscriptions ?"
+      "Quels sont les délais pour les inscriptions ?",
+      "Comment accéder au blog universitaire ?",
+      "Quelles sont les bourses disponibles ?"
     ],
     arabic: [
       "كيفية تحميل وثائقي؟",
@@ -39,7 +40,9 @@ const Chatbot = () => {
       "كيفية الاتصال بالولي؟",
       "أين أجد معلومات المنحة؟",
       "كيفية تعديل معلوماتي الشخصية؟",
-      "ما هي مواعيد التسجيل؟"
+      "ما هي مواعيد التسجيل؟",
+      "كيفية الوصول للمدونة الجامعية؟",
+      "ما هي المنح المتاحة؟"
     ],
     english: [
       "How to upload my documents?",
@@ -47,7 +50,9 @@ const Chatbot = () => {
       "How to contact my tutor?",
       "Where to find scholarship information?",
       "How to modify my personal information?",
-      "What are the registration deadlines?"
+      "What are the registration deadlines?",
+      "How to access the university blog?",
+      "What scholarships are available?"
     ],
     tamazight: [
       "ⵎⴰⵎⴽ ⴰⴷ ⴰⵙⵙⴰⵍⵉ ⵜⵇⴰⵔⴹⵉⵏⵉⵏⵓ?",
@@ -55,47 +60,47 @@ const Chatbot = () => {
       "ⵎⴰⵎⴽ ⴰⴷ ⵎⵢⴰⵡⴰⵙⵖ ⴷ ⵓⵎⵔⴰⴱⵓ?",
       "ⵎⴰⵏⵉ ⴰⴷ ⴰⴼⵖ ⵜⵎⵖⵔⵉⵏ ⵏ ⵜⵎⴰⵡⴰⵙⵜ?",
       "ⵎⴰⵎⴽ ⴰⴷ ⵙⵏⴼⵍⵖ ⵜⵎⵖⵔⵉⵏⵉⵏⵓ?",
-      "ⵎⴰⵜⵉⵏ ⵏ ⴰⵙⴽⵍⵙ?"
+      "ⵎⴰⵜⵉⵏ ⵏ ⴰⵙⴽⵍⵙ?",
+      "ⵎⴰⵎⴽ ⴰⴷ ⴰⵡⵉⵖ ⵙ ⵓⴱⵍⵓⴳ?",
+      "ⵎⴰⵜⵉⵏ ⵜⵎⴰⵡⴰⵙⵉⵏ?"
     ]
   };
 
-  // Bot responses in multiple languages
+  // Enhanced bot responses with more detailed information
   const botResponses = {
     french: {
-      "télécharger": "Pour télécharger vos documents, rendez-vous dans la section 'Autres Documents' depuis le tableau de bord. Cliquez sur la catégorie de document souhaitée et suivez les instructions.",
-      "obligatoire": "Les documents obligatoires incluent : carte d'identité ou passeport, photo d'identité récente, certificat médical, justificatif de domicile, et vos diplômes précédents.",
-      "tuteur": "Les informations de votre tuteur légal se trouvent dans la section 'Tuteur Légal' du tableau de bord. Vous pouvez y consulter et modifier ses coordonnées.",
-      "bourse": "Les informations de bourse sont dans la section 'Informations Spécifiques' sous 'Informations Administratives'. Vous pouvez y renseigner le type et montant de votre bourse.",
-      "modifier": "Vous pouvez modifier vos informations personnelles en allant dans la section correspondante depuis le tableau de bord. N'oubliez pas de sauvegarder vos modifications.",
-      "délai": "Les délais d'inscription varient selon les formations. Consultez le calendrier académique ou contactez votre secrétariat pédagogique pour plus d'informations.",
-      "default": "Je comprends votre question. Pour une assistance personnalisée, je vous recommande de consulter les différentes sections de votre tableau de bord ou de contacter directement votre secrétariat pédagogique."
+      "télécharger": "📄 Pour télécharger vos documents :\n\n1. Connectez-vous à votre espace EZWatiqa\n2. Accédez à la section 'Autres Documents'\n3. Sélectionnez la catégorie de document souhaitée\n4. Cliquez sur 'Télécharger' et suivez les instructions\n5. Vérifiez que le format est accepté (PDF, JPG, PNG)\n\n💡 Conseil: Organisez vos documents par catégorie pour un accès plus rapide!",
+      
+      "obligatoire": "📋 Documents obligatoires pour l'inscription :\n\n✅ Carte d'identité nationale ou passeport\n✅ Photo d'identité récente (fond blanc)\n✅ Certificat médical (moins de 3 mois)\n✅ Justificatif de domicile récent\n✅ Diplôme du baccalauréat ou équivalent\n✅ Relevé de notes du bac\n✅ Certificat de naissance\n\n⚠️ Important: Tous les documents doivent être en format PDF ou image haute qualité.",
+      
+      "tuteur": "👥 Informations tuteur légal :\n\nVous pouvez gérer les informations de votre tuteur dans la section 'Tuteur Légal' :\n• Consulter ses coordonnées\n• Modifier les informations de contact\n• Ajouter une pièce d'identité\n• Mettre à jour l'adresse\n\n📞 En cas de problème, contactez le secrétariat de votre faculté.",
+      
+      "bourse": "💰 Informations sur les bourses :\n\n🎯 Types de bourses disponibles :\n• Bourse d'excellence académique\n• Bourse sociale (critères sociaux)\n• Bourse de mérite sportif\n• Bourse pour étudiants en situation de handicap\n\n📍 Accès: Section 'Informations Spécifiques' > 'Informations Administratives'\n\n💡 Astuce: Consultez régulièrement le blog pour les appels à candidatures!",
+      
+      "modifier": "✏️ Modification des informations personnelles :\n\n1. Accédez à la section 'Informations Personnelles'\n2. Cliquez sur 'Modifier'\n3. Effectuez vos changements\n4. Vérifiez les informations\n5. Cliquez sur 'Sauvegarder'\n\n⚠️ Attention: Certaines modifications peuvent nécessiter une validation administrative.",
+      
+      "délai": "📅 Délais d'inscription 2024 :\n\n🎓 Licence :\n• 1ère inscription: 15 juin - 30 septembre\n• Réinscription: 1er juillet - 15 octobre\n\n🎓 Master :\n• Candidatures: 1er mai - 30 juin\n• Inscription définitive: après admission\n\n📞 Contactez votre faculté pour des informations spécifiques à votre filière.",
+      
+      "blog": "📖 Blog Universitaire EZWatiqa :\n\nDécouvrez notre blog riche en contenus :\n• Articles sur l'orientation universitaire\n• Guides pratiques pour les étudiants\n• Actualités des universités marocaines\n• Conseils pour réussir ses études\n• Informations sur les bourses\n\n🔗 Accès direct via le menu principal > 'Blog Universitaire'",
+      
+      "bourses": "🏆 Bourses disponibles 2024 :\n\n💡 Bourse d'Excellence (500-2000 DH/mois)\n• Critère: Mention TB au bac + moyenne >16/20\n\n🤝 Bourse Sociale (300-1500 DH/mois)\n• Critère: Revenu familial < 50,000 DH/an\n\n🏃 Bourse Sportive (400-1000 DH/mois)\n• Critère: Performance sportive nationale\n\n♿ Bourse Handicap (600-2000 DH/mois)\n• Critère: Situation de handicap certifiée",
+      
+      "default": "🤖 Je comprends votre question et je suis là pour vous aider !\n\nPour une assistance personnalisée, vous pouvez :\n• Explorer les différentes sections de votre tableau de bord\n• Consulter notre blog universitaire pour des guides détaillés\n• Contacter directement votre secrétariat pédagogique\n• Poser une question plus spécifique\n\n💬 N'hésitez pas à reformuler votre question pour que je puisse mieux vous aider !"
     },
     arabic: {
-      "تحميل": "لتحميل وثائقك، اذهب إلى قسم 'وثائق أخرى' من لوحة التحكم. انقر على فئة الوثيقة المطلوبة واتبع التعليمات.",
-      "إجبارية": "تشمل الوثائق الإجبارية: بطاقة الهوية أو جواز السفر، صورة شخصية حديثة، شهادة طبية، مبرر السكن، وشهاداتك السابقة.",
-      "ولي": "معلومات وليك القانوني موجودة في قسم 'الولي القانوني' في لوحة التحكم. يمكنك الاطلاع وتعديل معلومات الاتصال الخاصة به.",
-      "منحة": "معلومات المنحة في قسم 'معلومات محددة' تحت 'المعلومات الإدارية'. يمكنك إدخال نوع ومبلغ منحتك.",
-      "تعديل": "يمكنك تعديل معلوماتك الشخصية بالذهاب إلى القسم المقابل من لوحة التحكم. لا تنس حفظ تعديلاتك.",
-      "مواعيد": "تختلف مواعيد التسجيل حسب التخصصات. استشر التقويم الأكاديمي أو اتصل بأمانة كليتك للمزيد من المعلومات.",
-      "default": "أفهم سؤالك. للحصول على مساعدة شخصية، أنصحك بمراجعة الأقسام المختلفة في لوحة التحكم أو الاتصال مباشرة بأمانة كليتك."
+      "تحميل": "📄 لتحميل وثائقك:\n\n1. قم بتسجيل الدخول إلى حسابك في EZWatiqa\n2. انتقل إلى قسم 'وثائق أخرى'\n3. اختر فئة الوثيقة المطلوبة\n4. انقر على 'تحميل' واتبع التعليمات\n5. تأكد من أن التنسيق مقبول (PDF، JPG، PNG)\n\n💡 نصيحة: نظم وثائقك حسب الفئات للوصول السريع!",
+      
+      "إجبارية": "📋 الوثائق الإجبارية للتسجيل:\n\n✅ بطاقة الهوية الوطنية أو جواز السفر\n✅ صورة شخصية حديثة (خلفية بيضاء)\n✅ شهادة طبية (أقل من 3 أشهر)\n✅ مبرر السكن حديث\n✅ شهادة البكالوريا أو ما يعادلها\n✅ كشف نقاط البكالوريا\n✅ رسم الولادة\n\n⚠️ مهم: جميع الوثائق يجب أن تكون بصيغة PDF أو صورة عالية الجودة.",
+      
+      "default": "🤖 أفهم سؤالك وأنا هنا لمساعدتك!\n\nللحصول على مساعدة شخصية، يمكنك:\n• استكشاف الأقسام المختلفة في لوحة التحكم\n• مراجعة مدونتنا الجامعية للأدلة التفصيلية\n• الاتصال مباشرة بأمانة كليتك\n• طرح سؤال أكثر تحديداً\n\n💬 لا تتردد في إعادة صياغة سؤالك لأتمكن من مساعدتك بشكل أفضل!"
     },
     english: {
-      "upload": "To upload your documents, go to the 'Other Documents' section from the dashboard. Click on the desired document category and follow the instructions.",
-      "mandatory": "Mandatory documents include: ID card or passport, recent ID photo, medical certificate, proof of residence, and your previous diplomas.",
-      "tutor": "Your legal guardian's information is in the 'Legal Guardian' section of the dashboard. You can view and modify their contact details there.",
-      "scholarship": "Scholarship information is in the 'Specific Information' section under 'Administrative Information'. You can enter your scholarship type and amount there.",
-      "modify": "You can modify your personal information by going to the corresponding section from the dashboard. Don't forget to save your changes.",
-      "deadline": "Registration deadlines vary by program. Check the academic calendar or contact your faculty's secretariat for more information.",
-      "default": "I understand your question. For personalized assistance, I recommend consulting the different sections of your dashboard or contacting your faculty secretariat directly."
+      "upload": "📄 To upload your documents:\n\n1. Log into your EZWatiqa account\n2. Go to 'Other Documents' section\n3. Select the desired document category\n4. Click 'Upload' and follow instructions\n5. Ensure format is accepted (PDF, JPG, PNG)\n\n💡 Tip: Organize your documents by category for faster access!",
+      
+      "default": "🤖 I understand your question and I'm here to help!\n\nFor personalized assistance, you can:\n• Explore different sections of your dashboard\n• Check our university blog for detailed guides\n• Contact your faculty secretariat directly\n• Ask a more specific question\n\n💬 Feel free to rephrase your question so I can better assist you!"
     },
     tamazight: {
-      "ⴰⵙⵙⴰⵍⵉ": "ⵃⵎⴰ ⴰⴷ ⵜⴰⵙⵙⴰⵍⵉⴷ ⵜⵇⴰⵔⴹⵉⵏⵏⵓⵏ, ⴷⴷⵓ ⵙ ⵢⵉⵃⵔⵉⵛ ⵏ 'ⵜⵇⴰⵔⴹⵉⵏ ⵢⴰⴹⵏ' ⵙⴳ ⵜⴰⴼⵍⵡⵉⵜ ⵏ ⵓⵎⵜⵜⵓ.",
-      "ⵉⵜⵜⵓⵙⴰⵔ": "ⵜⵇⴰⵔⴹⵉⵏ ⵉⵜⵜⵓⵙⴰⵔⵏ: ⵜⴰⴽⴰⵔⴹⴰ ⵏ ⵓⵙⵓⵍ, ⵜⵓⵙⵙⵏⴰ ⵜⴰⵎⴰⵢⵏⵓⵜ, ⵜⵉⴱⵔⴰⵜ ⵏ ⵓⴷⴷⴰⵏ...",
-      "ⵓⵎⵔⴰⴱⵓ": "ⵜⵎⵖⵔⵉⵏ ⵏ ⵓⵎⵔⴰⴱⵓⵏⵏⵓⵏ ⵜⵍⵍⴰⵏⵜ ⴳ ⵢⵉⵃⵔⵉⵛ ⵏ 'ⴰⵎⵔⴰⴱⵓ ⵏ ⵓⵣⵔⴼ'.",
-      "ⵜⵎⴰⵡⴰⵙⵜ": "ⵜⵎⵖⵔⵉⵏ ⵏ ⵜⵎⴰⵡⴰⵙⵜ ⵜⵍⵍⴰⵏⵜ ⴳ ⵢⵉⵃⵔⵉⵛ ⵏ 'ⵜⵎⵖⵔⵉⵏ ⵏ ⵓⵙⵍⴰⵢ'.",
-      "ⵙⵏⴼⵍ": "ⵜⵖⵉⵍⴷ ⴰⴷ ⵜⵙⵏⴼⵍⴷ ⵜⵎⵖⵔⵉⵏⵏⵓⵏ ⵙ ⵓⴷⴷⵓ ⵙ ⵢⵉⵃⵔⵉⵛ ⵉⵎⵢⴰⵙⴰⵏ.",
-      "ⵜⵉⵣⵉ": "ⵜⵉⵣⵉⵢⵉⵏ ⵏ ⵓⵙⴽⵍⵙ ⵎⵣⴰⵔⴰⵢⵏⵜ ⵙ ⵓⵙⵍⵎⴷ. ⵙⵙⴼⵔⵓ ⴰⵙⵎⵏⵉⴷ ⴰⵏⴰⵙⵉⵔⴰⵎ.",
-      "default": "ⴰⵔⵎⵖ ⴰⵙⵇⵙⵉⵏⵏⵓⵏ. ⵃⵎⴰ ⴰⴷ ⵜⴰⵡⵉⴷ ⴰⵏⴰⵔ ⵓⴷⴷⵉⵙ, ⵙⵙⴼⵔⵓ ⵉⵃⵔⵉⵛⵏ ⴱⴰⵀⵔⴰ ⵏ ⵜⴰⴼⵍⵡⵉⵜⵏⵏⵓⵏ."
+      "default": "🤖 ⴰⵔⵎⵖ ⴰⵙⵇⵙⵉⵏⵏⵓⵏ ⴷ ⵏⵏⴰ ⴷⴰ ⴳ ⵉⵡⵉⴷ ⴰⵏⴰⵔ!\n\nⵃⵎⴰ ⴰⴷ ⵜⴰⵡⵉⴷ ⴰⵏⴰⵔ ⵓⴷⴷⵉⵙ:\n• ⵙⵙⴼⵔⵓ ⵉⵃⵔⵉⵛⵏ ⴱⴰⵀⵔⴰ ⵏ ⵜⴰⴼⵍⵡⵉⵜⵏⵏⵓⵏ\n• ⵙⵙⴼⵔⵓ ⴰⴱⵍⵓⴳⵏⵏⴰⵖ ⴰⵏⴰⵙⵉⵔⴰⵎ\n• ⵎⵢⴰⵡⴰⵙ ⴷ ⵜⴰⵎⴰⵡⴰⵙⵜⵏⵏⵓⵏ\n• ⵙⵇⵙⴰ ⵢⴰⵏ ⵓⵙⵇⵙⵉ ⵓⴷⴷⵉⵙ\n\n💬 ⵙⵏⴼⵍ ⴰⵙⵇⵙⵉⵏⵏⵓⵏ ⴰⴽⴽⵯ ⴰⴷ ⴰⴽⵉⵏ ⴰⵏⴰⵔ ⵓⴳⴳⴰⵔ!"
     }
   };
 
@@ -138,6 +143,7 @@ const Chatbot = () => {
     const lowerInput = input.toLowerCase();
     const responses = botResponses[language] || botResponses.french;
     
+    // Enhanced keyword matching
     for (const [keyword, response] of Object.entries(responses)) {
       if (keyword !== 'default' && lowerInput.includes(keyword)) {
         return response;
@@ -156,7 +162,7 @@ const Chatbot = () => {
         french: 'fr-FR',
         arabic: 'ar-MA',
         english: 'en-US',
-        tamazight: 'fr-FR' // Fallback to French for Tamazight
+        tamazight: 'fr-FR'
       };
       
       recognition.lang = langMap[language];
@@ -198,22 +204,22 @@ const Chatbot = () => {
   const currentQuestions = predefinedQuestions[language] || predefinedQuestions.french;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <div className="bg-gradient-to-r from-green-600 to-red-600 text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Button 
               variant="ghost" 
               size="icon"
-              onClick={() => navigate('/dashboard')}
-              className={`${isRTL ? 'ml-4' : 'mr-4'} text-white hover:bg-white/20`}
+              onClick={() => navigate('/home')}
+              className={`${isRTL ? 'ml-4' : 'mr-4'} text-primary-foreground hover:bg-primary-foreground/20`}
             >
               <ArrowLeft className={`h-6 w-6 ${isRTL ? 'rotate-180' : ''}`} />
             </Button>
             <div>
               <h1 className="text-xl font-bold">{t('chatbot.title')}</h1>
-              <p className="text-green-100 text-sm">{t('chatbot.subtitle')}</p>
+              <p className="text-primary-foreground/90 text-sm">{t('chatbot.subtitle')}</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
@@ -221,7 +227,7 @@ const Chatbot = () => {
               variant="ghost"
               size="icon"
               onClick={toggleSpeaking}
-              className="text-white hover:bg-white/20"
+              className="text-primary-foreground hover:bg-primary-foreground/20"
             >
               {isSpeaking ? <Volume2 className="h-6 w-6" /> : <VolumeX className="h-6 w-6" />}
             </Button>
@@ -231,8 +237,8 @@ const Chatbot = () => {
       </div>
 
       {/* Quick Questions */}
-      <div className="px-6 py-4 bg-white border-b">
-        <p className="text-sm text-gray-600 mb-3">Questions fréquentes :</p>
+      <div className="px-6 py-4 bg-card border-b border-border">
+        <p className="text-sm text-muted-foreground mb-3">Questions fréquentes :</p>
         <div className="flex flex-wrap gap-2">
           {currentQuestions.slice(0, 3).map((question, index) => (
             <Button
@@ -240,7 +246,7 @@ const Chatbot = () => {
               variant="outline"
               size="sm"
               onClick={() => setInputMessage(question)}
-              className="text-xs border-green-300 hover:bg-green-50"
+              className="text-xs border-primary/30 hover:bg-primary/10"
             >
               {question}
             </Button>
@@ -257,14 +263,14 @@ const Chatbot = () => {
               className={`flex ${message.isBot ? (isRTL ? 'justify-end' : 'justify-start') : (isRTL ? 'justify-start' : 'justify-end')}`}
             >
               <div
-                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg whitespace-pre-wrap ${
                   message.isBot
-                    ? 'bg-gray-200 text-gray-800'
-                    : 'bg-gradient-to-r from-green-600 to-red-600 text-white'
+                    ? 'bg-muted text-muted-foreground'
+                    : 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground'
                 }`}
               >
                 <p className="text-sm">{message.text}</p>
-                <p className={`text-xs mt-1 ${message.isBot ? 'text-gray-500' : 'text-green-100'}`}>
+                <p className={`text-xs mt-1 ${message.isBot ? 'text-muted-foreground' : 'text-primary-foreground/80'}`}>
                   {message.timestamp.toLocaleTimeString(language === 'arabic' ? 'ar-MA' : 'fr-FR', { 
                     hour: '2-digit', 
                     minute: '2-digit' 
@@ -278,7 +284,7 @@ const Chatbot = () => {
       </div>
 
       {/* Input */}
-      <div className="px-6 py-4 bg-white border-t">
+      <div className="px-6 py-4 bg-card border-t border-border">
         <div className="flex items-center space-x-2">
           <Input
             value={inputMessage}
@@ -291,16 +297,16 @@ const Chatbot = () => {
             variant="outline"
             size="icon"
             onClick={handleVoiceInput}
-            className={isListening ? 'bg-red-100 border-red-300' : 'border-green-300 hover:bg-green-50'}
+            className={isListening ? 'bg-destructive/10 border-destructive/30' : 'border-primary/30 hover:bg-primary/10'}
           >
-            {isListening ? <MicOff className="h-4 w-4 text-red-600" /> : <Mic className="h-4 w-4" />}
+            {isListening ? <MicOff className="h-4 w-4 text-destructive" /> : <Mic className="h-4 w-4" />}
           </Button>
-          <Button onClick={handleSendMessage} className="bg-gradient-to-r from-green-600 to-red-600">
+          <Button onClick={handleSendMessage} className="bg-gradient-to-r from-primary to-primary/80">
             <Send className="h-4 w-4" />
           </Button>
         </div>
         {isListening && (
-          <p className="text-xs text-red-600 mt-1 animate-pulse">
+          <p className="text-xs text-destructive mt-1 animate-pulse">
             {t('chatbot.listening')}
           </p>
         )}
